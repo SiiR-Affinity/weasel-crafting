@@ -46,6 +46,11 @@ AddEventHandler("weasel-crafting:craftItem", function(data)
         end
         xPlayer.addInventoryItem(data.Item.Name, math.floor(data.Item.Quantity*data.Amount), data.Item.MetaData)
         success(source, "You have crafted "..math.floor(data.Item.Quantity*data.Amount).."x "..data.Item.DisplayName)
+        if data.Item.XPGain ~= nil then
+            TriggerEvent('siir_craftingLocations:updateXp', xPlayer, data.Item.XPGain * data.Amount)
+        else
+            return
+        end
     else
         error(source, "You are missing some required items")
     end

@@ -96,7 +96,7 @@ $(function() {
             if (id < Items.length && Items[id].Level <= Level) {
                 $.post('https://weasel-crafting/craft', JSON.stringify({
                     Item: Items[id],
-                    Amount: amount
+                    Amount: amount,
                 }));
             }
         }
